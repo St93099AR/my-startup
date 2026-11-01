@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-Up Interešu Pulciņi | Atrodi Savējos!</title>
+    <style>
+        /* CSS mainīgie (krāsu palete) */
+        :root {
+            --primary-color: #1e3a8a;       /* Tumši zila zīmola krāsa */
+            --primary-hover: #172554;       /* Temnāks zils akcents */
+            --accent-color: #3b82f6;        /* Spilgts zils akcents */
+            --bg-light: #f8fafc;            /* Gaišs fons lapai */
+            --card-bg: #ffffff;             /* Balts fons blokiem */
+            --text-main: #1e293b;           /* Tumšs teksts salasāmībai */
+            --text-muted: #64748b;          /* Pelēks palīgteksts */
+            --border-color: #e2e8f0;        /* Gaiša robežlīnija */
+        }
+
+        /* Globālie stili */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding: 20px;
+        }
+
+        /* Galvenais konteiners */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Galvene (Header) un Logotips */
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #ef4444, #f59e0b);
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+            margin-bottom: 15px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        header p b {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        header p i {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Sadaļas (Sections) */
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Tabula */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Saraksti */
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Pasākumu kartītes (Articles) */
+        article {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        article h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        article p {
+            margin-bottom: 5px;
+        }
+
+        /* Forma */
+        form {
+            background-color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        form p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Saites */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Kājene (Footer) */
+        footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="logo-badge">
+                <span class="logo-icon">🚀</span>
+            </div>
+            <p><b>🎉 Tavas pilsētas foršākie jauniešu pasākumi!</b></p>
+            <h1>Pop-Up Interešu Pulciņi</h1>
+            <p><i>Mikro-kopienas un neformālie hobiju klubi jauniešiem vecumā no 13 līdz 19 gadiem.</i></p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+
+            <!-- About Section -->
+            <section>
+                <h2>Par Mums</h2>
+                <p>Vai esi noguris no garlaicīgiem un obligātiem pulciņiem? Mēs veidojam brīvu vidi, kurā katrs var atrast jaunus draugus un nodarboties ar to, kas tiešām aizrauj!</p>
+                <p>Mūsu misija ir novērst vienatni un palīdzēt tev satikt domubiedrus nepiespiestā, mājīgā gaisotnē – kafejnīcās, jauniešu telpās un citās foršās vietās.</p>
+            </section>
+
+            <!-- What We Offer Section -->
+            <section>
+                <h2>Ko Mēs Piedāvājam?</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pasākumu Veidi</th>
+                            <th>Apraksts</th>
+                            <th>Kam piemērots?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>🎬 Filmu & Šovu Vakari</b></td>
+                            <td>Skatāmies iecienītākos seriālus un filmas uz lielā ekrāna, ēdam uzkodas un pārrunājam teorijas.</td>
+                            <td>Kino mīļotājiem un stāstu cienītājiem</td>
+                        </tr>
+                        <tr>
+                            <td><b>🎲 Galda Spēļu Turnīri</b></td>
+                            <td>No ātrām ballīšu spēlēm līdz stratēģiskajām RPG un D&D spēlēm.</td>
+                            <td>Azaida un taktikas cienītājiem</td>
+                        </tr>
+                        <tr>
+                            <td><b>💻 IT & Digitālā Māksla</b></td>
+                            <td>Kopīga programmēšana, pikseļu māksla (pixel art), dizaina un spēļu izstrādes sesijas.</td>
+                            <td>Tehnoloģiju un radošajiem prātiem</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>3 Galvenie Iemesli Pievienoties:</h3>
+                <ol>
+                    <li><b>Garantēti jaunie draugi:</b> Šeit visi nāk ar vienu mērķi – satikt domubiedrus.</li>
+                    <li><b>Bez ilgtermiņa saistībām:</b> Nāc tikai uz tiem pasākumiem, kas tev patīk (dalības maksa 3–5 EUR par reizi, ietver uzkodas un materiālus).</li>
+                    <li><b>Neformāla gaisotne:</b> Nav skolotāju, nav atzīmju, nav spiediena – tikai foršs laiks kopā.</li>
+                </ol>
+            </section>
+
+            <!-- Upcoming Events Section -->
+            <section>
+                <h2>Tuvākie Pasākumi</h2>
+                <article>
+                    <h3>🎲 Piektdienas Galda Spēļu Vakars</h3>
+                    <p><b>Kad:</b> Šo piektdien plkst. 17:00</p>
+                    <p><b>Kur:</b> Mājīgajā kafejnīcā "Stūris", Brīvības ielā 45</p>
+                    <p><b>Ieeja:</b> 3 EUR (cenā iekļauta tēja un cepumi)</p>
+                </article>
+
+                <article>
+                    <h3>💻 GameDev & Pixel Art Improvizācija</h3>
+                    <p><b>Kad:</b> Sestdien plkst. 14:00</p>
+                    <p><b>Kur:</b> Jauniešu telpās "Kods"</p>
+                    <p><b>Ieeja:</b> 4 EUR</p>
+                </article>
+            </section>
+
+            <!-- Registration & Contact Form Section -->
+            <section>
+                <h2>Piesakies Nākamajam Pasākumam!</h2>
+                <form action="#" method="post">
+                    <p>
+                        <label for="name">Tavs Vārds:</label>
+                        <input type="text" id="name" name="name" placeholder="piem., Jānis" required>
+                    </p>
+                    
+                    <p>
+                        <label for="age">Vecums:</label>
+                        <input type="number" id="age" name="age" min="13" max="19" placeholder="13-19" required>
+                    </p>
+
+                    <p>
+                        <label for="email">E-pasts:</label>
+                        <input type="email" id="email" name="email" placeholder="vards@epasts.lv" required>
+                    </p>
+
+                    <p>
+                        <label for="interest">Kas tevi visvairāk interesē?</label>
+                        <select id="interest" name="interest">
+                            <option value="board-games">Galda spēles</option>
+                            <option value="movies">Filmu vakari</option>
+                            <option value="coding">Programmēšana un IT</option>
+                            <option value="art">Digitālā māksla</option>
+                            <option value="other">Cits</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="message">Komentāri vai jautājumi:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Uzraksti mums kaut ko..."></textarea>
+                    </p>
+
+                    <p>
+                        <button type="submit">Nosūtīt Pieteikumu</button>
+                    </p>
+                </form>
+            </section>
+
+            <!-- Direct Contacts Section -->
+            <section>
+                <h2>Kontakti un Jautājumi</h2>
+                <p>Ja tev ir jautājumi vai vēlies ieteikt jaunu pulciņa ideju, raksti mums!</p>
+                <ul>
+                    <li><b>E-pasts:</b> <a href="mailto:info@popuppulcini.lv">info@popuppulcini.lv</a></li>
+                    <li><b>Tālrunis:</b> +371 20000000</li>
+                    <li><b>Instagram:</b> <a href="#">@popup_pulcini</a></li>
+                    <li><b>Discord kopiena:</b> <a href="#">Pievienojies mūsu serverim</a></li>
+                </ul>
+            </section>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer>
+            <p><small>&copy; 2026 Pop-Up Interešu Pulciņi. Visas tiesības aizsargātas.</small></p>
+            <p><small>Mājaslapa izveidota ar mīlestību pret jauniešu mikro-kopienām.</small></p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
